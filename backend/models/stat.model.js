@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const statSchema = new mongoose.Schema({
-    FG: {
+    fieldGoal: {
         type: Number,
         required: true
     },
@@ -23,7 +23,6 @@ const statSchema = new mongoose.Schema({
     },
     workoutDate: {
         type: Date,
-        required: true,
         default: Date.now()
     }
 })
