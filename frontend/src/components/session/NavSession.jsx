@@ -23,7 +23,7 @@ const NavSession = () => {
     };
     return (
         <div className='w-full relative'>
-            <ul className='flex justify-between gap-1 mb-4'>
+            <ul className='flex justify-between gap-1 mb-6'>
                 {TAB_ITEMS.map((item, index) => (
                     <li
                         className={`tabs ${
