@@ -16,7 +16,7 @@ const MainNavbar = () => {
   ];
   return (
     <div className="bg-purple text-white fixed bottom-0 w-full right-0 h-16  py-2">
-      <nav className="flex justify-between items-center px-5">
+      <nav className="flex justify-between items-center nav-container">
         {NAVBAR_ITEMS.map((item, index) => (
           <NavLink
             to={item.href}

@@ -3,11 +3,40 @@
 @tailwind utilities;
 
 
-@layer {
+/* Add this to your CSS file */
+/* 
+.tab-content {
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
+  
+  .transform {
+    transform: translateX(0);
+  }
+  
+  .translate-x-full {
+    transform: translateX(100%);
+  }
+  
+  .-translate-x-full {
+    transform: translateX(-100%);
+  }
+   */
+
+@layer utilities {
     .container {
-        @apply max-w-[340px] mx-auto ;
+        @apply max-w-[340px] mx-auto sm:max-w-[340px] lg:max-w-[340px] ;
     }
     .heading {
         @apply text-center text-2xl uppercase font-bold mb-4;
+    }
+    .tabs {
+        @apply  text-xs px-2 py-1 rounded-lg;
+    }
+    .nav-container {
+        @apply max-w-[360px] mx-auto sm:max-w-[360px] lg:max-w-[360px] 
     }
 }
