@@ -5,7 +5,7 @@ const router = Router()
 
 router.get('/', getAllStats)
 router.get('/:id', getOneStat)
-router.post('/', createStat)
+router.post('/user/:userId', createStat)
 router.delete('/:id', deleteStat)
 router.put('/:id', updateStat)
 

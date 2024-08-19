@@ -24,7 +24,9 @@ const statSchema = new mongoose.Schema({
     workoutDate: {
         type: Date,
         default: Date.now()
-    }
-})
+    },
+    user: {type: mongoose.Schema.Types.ObjectId, red: 'User', required: true}
+
+}, {timestamps: true})
 
 export const Stat = mongoose.model("Stat", statSchema)

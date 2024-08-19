@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { Stat } from '../models/stat.model.js';
+import { User } from '../models/user.model.js';
 
 /* ------------------------------- SELECT ALL ------------------------------- */
 export const getAllStats = async (req, res, next) => {
@@ -38,8 +39,14 @@ export const getOneStat = async (req, res, next) => {
 /* ------------------------------- CREATE STAT ------------------------------ */
 export const createStat = async (req, res, next) => {
     const stat = req.body;
+    const {userId} = req.params
 
     try {
+        // check if the user exists
+        const user = await User.findById(userId)
+        if(!user) {
+            return res.status(404).json({success: false, message: "User not found"})
+        }
         if (
             !stat.fieldGoal ||
             !stat.threePoint ||
@@ -52,9 +59,10 @@ export const createStat = async (req, res, next) => {
                 .json({ success: false, message: 'Please profide all fields' });
         }
 
-        const newStat = new Stat(stat);
+        const newStat = new Stat({...stat, user: userId});
 
         await newStat.save();
+        await User.findByIdAndUpdate(userId, {$push: {stats: newStat._id}})
 
         res.status(201).json({
             success: true,

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const userSchema =new mongoose.Schema({
     firstname: {
@@ -18,6 +18,7 @@ const userSchema =new mongoose.Schema({
         type: String,
         required: true,
     },
+    stats: [{type: mongoose.Schema.Types.ObjectId, ref: "Stat"}]
     
 }, {timestamps: true})
 
