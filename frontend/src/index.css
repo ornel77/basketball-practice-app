@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body {
+  background-color: #EFE0D9;
+}
 /* Add this to your CSS file */
 /* 
 .tab-content {
@@ -26,9 +28,46 @@
   }
    */
 
+/* -------------------------------------------------------------------------- */
+/*                                INPUT NUMBER                                */
+/* -------------------------------------------------------------------------- */
+
+.custom-num {
+  /* margin: 1em; */
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3em;
+  width: 5.5rem;
+  padding: 0 .2rem;
+  border: 1px solid #000;
+  transition: .3s;
+}
+
+.num-input::-webkit-outer-spin-button, .num-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.num-input {
+  font-size: 1.2em;
+  text-align: center;
+  background: none;
+  border: none;
+  color: rgb(43, 154, 210);
+  font-weight: bold;
+  width: 100%;
+}
+
+.num-input:focus {
+  outline: none;
+}
+
+
 @layer utilities {
     .container {
-        @apply max-w-[340px] mx-auto sm:max-w-[340px] lg:max-w-[340px] ;
+        @apply max-w-[340px] mx-auto sm:max-w-[450px] lg:max-w-[340px] ;
     }
     .heading {
         @apply text-center text-2xl uppercase font-bold mb-4;
@@ -37,6 +76,6 @@
         @apply  text-xs px-2 py-1 rounded-lg;
     }
     .nav-container {
-        @apply max-w-[360px] mx-auto sm:max-w-[360px] lg:max-w-[360px] 
+        @apply max-w-[340px] mx-auto sm:max-w-[450px] lg:max-w-[340px] 
     }
 }
