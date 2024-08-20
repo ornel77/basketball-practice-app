@@ -15,8 +15,6 @@ const NavSession = () => {
         { label: '0° Right', tabName: 'fifth' },
     ];
 
-
-
     const handleTab = (tab) => {
         if (tab === activeTab) return;
         setActiveTab(tab);

@@ -8,7 +8,6 @@ const InputNumber = ({ id }) => {
     const { inputNumberValues, setInputValue, increaseValue, decreaseValue } =
         useInputNumberStore();
     const inputValue = inputNumberValues[id] || 0;
-    console.log(inputNumberValues);
     const handleMinus = () => {
         if (inputValue <= 0) return;
 

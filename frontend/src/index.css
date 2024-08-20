@@ -73,7 +73,7 @@ body {
         @apply text-center text-2xl uppercase font-bold mb-4;
     }
     .tabs {
-        @apply  text-xs px-2 py-1 rounded-lg;
+        @apply  text-nowrap text-sm px-2 py-1 rounded-lg;
     }
     .nav-container {
         @apply max-w-[340px] mx-auto sm:max-w-[450px] lg:max-w-[340px] 

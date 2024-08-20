@@ -8,7 +8,6 @@ const FirstAngle = () => {
       <SpotCard label={"Spot 2"} id={"zeroL2"}/>
       <SpotCard label={"Spot 3"} id={"zeroL3"}/>
       <SpotCard label={"3PTS"}  id={"threeZeroL"}/>
-      
     </div>
   )
 }
