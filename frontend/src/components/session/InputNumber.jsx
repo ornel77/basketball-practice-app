@@ -8,15 +8,6 @@ const InputNumber = ({ id }) => {
     const { inputNumberValues, setInputValue, increaseValue, decreaseValue } =
         useInputNumberStore();
     const inputValue = inputNumberValues[id] || 0;
-    const handleMinus = () => {
-        if (inputValue <= 0) return;
-
-        decreaseValue(id);
-    };
-    const handlePlus = () => {
-        if (inputValue >= 5) return;
-        increaseValue(id);
-    };
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -35,7 +26,7 @@ const InputNumber = ({ id }) => {
             <FaChevronLeft
                 size={24}
                 className='px-1 cursor-pointer'
-                onClick={handleMinus}
+                onClick={() => decreaseValue(id)}
             />
             <input
                 type='number'
@@ -49,7 +40,7 @@ const InputNumber = ({ id }) => {
             <FaChevronRight
                 size={24}
                 className='px-1 cursor-pointer'
-                onClick={handlePlus}
+                onClick={() => increaseValue(id)}
             />
         </div>
     );
