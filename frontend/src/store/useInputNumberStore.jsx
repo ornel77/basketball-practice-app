@@ -6,6 +6,13 @@ const useInputNumberStore = create((set) => ({
         set((state) => ({
             inputNumberValues: { ...state.inputNumberValues, [id]: value },
         })),
+    initializeValues: (keys, defaultValue) => set((state) => {
+        const newValues = {}
+        keys.forEach(key => {
+            newValues[key] = state.inputNumberValues[key] ?? defaultValue
+        })
+        return { inputNumberValues: { ...state.inputNumberValues, ...newValues } };
+    }),
     increaseValue: (id) =>
         set((state) => {
             const currentValue = state.inputNumberValues[id] || 0;

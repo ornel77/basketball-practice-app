@@ -1,16 +1,17 @@
 import SliderInput from "./SliderInput";
 
 import NavSession from "./NavSession";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useInputRangeStore from "../../store/useInputRangeStore";
 import useInputNumberStore from "../../store/useInputNumberStore";
 import { generatePercent } from "../../utils/generatePercent";
+import { SPOT_ID } from "../../utils/data";
 
 const SessionForm = () => {
   // STORE
   const { inputRangeValues, resetRangeValue } = useInputRangeStore();
-  const { inputNumberValues, resetNumberValue } = useInputNumberStore();
-
+  const { inputNumberValues, initializeValues, resetNumberValue } = useInputNumberStore();
+  
   const currentDate = Date.now();
   const formattedDate = new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
@@ -23,15 +24,21 @@ const SessionForm = () => {
     .join("-");
 
   const [selectedDate, setSelectedDate] = useState(formattedDate);
+  
+  useEffect(() => {
+    initializeValues(SPOT_ID, 0)
+  }, [initializeValues, SPOT_ID])
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const average = generatePercent(inputNumberValues, inputRangeValues);
     console.log({ ...average, selectedDate });
-    // for(let value in inputNumberValues) delete inputNumberValues[value]
+    console.log(inputNumberValues);
     resetNumberValue()
     resetRangeValue()
   };
 
+ 
   const handleInputDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
@@ -79,7 +86,7 @@ const SessionForm = () => {
         value={selectedDate}
         onChange={handleInputDateChange}
       />
-      <button className="px-4 py-3 bg-red w-full uppercase text-white font-bold text-xl rounded-lg shadow-lg bottom-20 left-0 z-10 sticky">
+      <button className="px-4 py-3 bg-red w-full uppercase text-white font-bold text-xl rounded-lg shadow-lg bottom-20 left-0 z-10 sticky opacity-90">
         Finished
       </button>
     </form>
