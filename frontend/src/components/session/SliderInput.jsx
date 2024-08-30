@@ -14,6 +14,7 @@ const SliderInput = ({ label, min, step, max, id, name }) => {
             setInputRange(name, 0);
         }
     }, [name, inputRangeValues, setInputRange]);
+    
     return (
         <div className=''>
             <label htmlFor={id} className='font-light mb-2 inline-block'>
