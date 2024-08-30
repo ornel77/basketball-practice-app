@@ -26,6 +26,7 @@ const useInputNumberStore = create((set) => ({
                 },
             };
         }),
+    resetNumberValue: () => set({inputNumberValues: {}})
 }));
 
 export default useInputNumberStore;

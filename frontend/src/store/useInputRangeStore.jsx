@@ -6,6 +6,7 @@ const useInputRangeStore = create((set) => ({
         set((state) => ({
             inputRangeValues: { ...state.inputRangeValues, [key]: value },
         })),
+    resetRangeValue: () => set({inputRangeValues: {}})
 }));
 
 export default useInputRangeStore;
