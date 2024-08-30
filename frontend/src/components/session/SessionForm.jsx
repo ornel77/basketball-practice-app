@@ -25,8 +25,8 @@ const SessionForm = () => {
     const [selectedDate, setSelectedDate] = useState(formattedDate);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const average = generatePercent(inputNumberValues)
-        console.log(average);
+        const average = generatePercent(inputNumberValues, inputRangeValues)
+        console.log({...average, selectedDate});
     };
 
     const handleInputDateChange = (e) => {
