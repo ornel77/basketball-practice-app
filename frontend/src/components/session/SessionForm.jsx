@@ -1,17 +1,23 @@
 import SliderInput from './SliderInput';
-
 import NavSession from './NavSession';
 import { useEffect, useState } from 'react';
+
 import useInputRangeStore from '../../store/useInputRangeStore';
 import useInputNumberStore from '../../store/useInputNumberStore';
+import useRecapStore from '../../store/useRecapStore';
+
 import { generatePercent } from '../../utils/generatePercent';
+
 import { SPOT_ID } from '../../utils/data';
+import { useNavigate } from 'react-router-dom';
 
 const SessionForm = () => {
+    const navigate =  useNavigate()
     // STORE
     const { inputRangeValues, resetRangeValue } = useInputRangeStore();
     const { inputNumberValues, initializeValues, resetNumberValue } =
         useInputNumberStore();
+    const {setRecap} = useRecapStore()
 
     const currentDate = Date.now();
     const formattedDate = new Intl.DateTimeFormat('en-GB', {
@@ -24,6 +30,7 @@ const SessionForm = () => {
         .reverse()
         .join('-');
 
+    // STATE
     const [selectedDate, setSelectedDate] = useState(formattedDate);
 
     useEffect(() => {
@@ -33,10 +40,12 @@ const SessionForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const average = generatePercent(inputNumberValues, inputRangeValues);
+        setRecap(average)
         console.log({ ...average, selectedDate });
         console.log(inputNumberValues);
-        // resetNumberValue();
+        resetNumberValue();
         resetRangeValue();
+        navigate('/recap')
 
     };
 
@@ -51,7 +60,7 @@ const SessionForm = () => {
             </section>
 
             <section className='bg-white rounded-lg mb-8 p-4 shadow-lg'>
-                <h2 className='text-center text-2xl uppercase font-bold mb-4'>
+                <h2 className='title'>
                     layup and free throw
                 </h2>
                 <div className='flex flex-col gap-5'>

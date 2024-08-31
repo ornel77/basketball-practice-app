@@ -121,7 +121,7 @@ body {
     .container {
         @apply max-w-[340px] mx-auto sm:max-w-[450px] lg:max-w-[340px] ;
     }
-    .heading {
+    .title {
         @apply text-center text-2xl uppercase font-bold mb-4;
     }
     .tabs {

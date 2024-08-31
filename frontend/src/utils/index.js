@@ -1,3 +1,7 @@
+import Avatar from '/assets/image/avatar.png'
+export const avatar = Avatar
+
+
 
 import zero1L from '/assets/image/zero1L.svg'
 import zero2L from '/assets/image/zero2L.svg'

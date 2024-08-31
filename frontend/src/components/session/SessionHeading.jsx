@@ -7,7 +7,7 @@ const SessionHeading = () => {
         Hi,
         <span className="italic">Adam</span>! 👋🏽{" "}
       </p>
-      <h2 className="text-center text-2xl uppercase font-bold mb-4">
+      <h2 className="title">
         start a session
       </h2>
     </>

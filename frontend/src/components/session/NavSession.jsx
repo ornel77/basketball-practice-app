@@ -31,7 +31,7 @@ const NavSession = () => {
                         }`}
                         key={index}
                     >
-                        <button onClick={() => handleTab(item.tabName)}>
+                        <button type='button' onClick={() => handleTab(item.tabName)}>
                             {' '}
                             {item.label}{' '}
                         </button>
