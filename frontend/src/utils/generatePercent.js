@@ -44,5 +44,6 @@ export const generatePercent = (shoot, bonus) => {
   const ll = +((bonus["ll"] / 20) * 100).toFixed(2);
   const lr = +((bonus["lr"] / 20) * 100).toFixed(2);
   const ft = +((bonus["ft"] / 10) * 100).toFixed(2);
+  
   return { fieldAvg, threeAvg, ll, lr, ft };
 };
