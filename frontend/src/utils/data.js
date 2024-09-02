@@ -20,3 +20,21 @@ export const SPOT_ID = [
   "zeroR3",
   "threeZeroR",
 ];
+
+export const HISTORIC_HEADING = ["fg", "3pt", "ly l", "ly r", "ft"]
+
+export const STATS = [
+  {fieldAvg: 20, threeAvg: 20, ll: 60, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "top"},
+  {fieldAvg: 30, threeAvg: 12, ll: 13, lr: 40, ft: 40, sessionDate: "2024-07-01", comment: "LA PLUS ANCIENNE"},
+  {fieldAvg: 90, threeAvg: 40, ll: 50, lr: 40, ft: 32, sessionDate: "2024-09-03", comment: ""},
+  {fieldAvg: 23, threeAvg: 20, ll: 60, lr: 40, ft: 67, sessionDate: "2024-09-12", comment: "good"},
+  {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-08-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+  // {fieldAvg: 50, threeAvg: 20, ll: 90, lr: 40, ft: 40, sessionDate: "2024-09-02", comment: "work"},
+]

@@ -42,8 +42,8 @@ const SessionForm = () => {
     e.preventDefault();
     const average = generatePercent(inputNumberValues, inputRangeValues);
     setRecap({ ...average, sessionDate: selectedDate, comment });
-    console.log({ ...average, selectedDate });
-    console.log(inputNumberValues);
+    // console.log({ ...average, selectedDate });
+    // console.log(inputNumberValues);
     console.log(recap);
     resetNumberValue();
     resetRangeValue();
