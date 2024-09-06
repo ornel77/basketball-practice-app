@@ -56,7 +56,7 @@ const SessionForm = () => {
 
   return (
     <form className="relative" onSubmit={handleSubmit}>
-      <section className="flex flex-wrap gap-6 mb-8">
+      <section className="flex flex-wrap mb-8">
         <NavSession />
       </section>
 
