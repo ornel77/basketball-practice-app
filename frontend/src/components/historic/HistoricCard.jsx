@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import { HISTORIC_HEADING } from "../../utils/data";
 
 const HistoricCard = ({ stat }) => {

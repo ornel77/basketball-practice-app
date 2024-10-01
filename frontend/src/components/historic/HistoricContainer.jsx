@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+
 import { STATS } from "../../utils/data";
 import HistoricCard from "./HistoricCard";
 
