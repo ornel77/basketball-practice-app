@@ -128,6 +128,9 @@ body {
         @apply  text-nowrap text-sm px-2 py-1 rounded-lg;
     }
     .nav-container {
-        @apply max-w-[332px] mx-auto sm:max-w-[450px] lg:max-w-[340px] 
+        @apply max-w-[332px] mx-auto sm:max-w-[450px] lg:max-w-[340px]; 
+    }
+    .card {
+      @apply bg-white mb-4 py-3 px-5 rounded-lg shadow-md;
     }
 }

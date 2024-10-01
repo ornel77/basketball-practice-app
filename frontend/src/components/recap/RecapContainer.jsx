@@ -4,18 +4,10 @@ import { avatar } from '../../utils';
 import useRecapStore from '../../store/useRecapStore';
 import { useNavigate } from 'react-router-dom';
 
-import confetti from 'canvas-confetti';
-import { useEffect } from 'react';
-
 const RecapContainer = () => {
     const { recap } = useRecapStore();
 
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     if (recap) {
-    //         confetti();
-    //     }
-    // }, []);
 
     return (
         <div>

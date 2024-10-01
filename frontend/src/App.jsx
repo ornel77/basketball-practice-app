@@ -6,6 +6,7 @@ import HistoricPage from "./pages/HistoricPage";
 import SettingPage from "./pages/SettingPage";
 import MainNavbar from "./components/common/MainNavbar";
 import RecapPage from "./pages/RecapPage";
+import AccountSettings from "./components/settings/subPages/AccountSettings";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SessionPage />} />
         <Route path="/recap" element={<RecapPage />} />
+        <Route path="/setting/account" element={<AccountSettings />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/historic" element={<HistoricPage />} />
         <Route path="/help" element={<HelpPage />} />
