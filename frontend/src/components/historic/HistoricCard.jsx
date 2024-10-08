@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import { HISTORIC_HEADING } from "../../utils/data";
 
 const HistoricCard = ({ stat }) => {
@@ -7,7 +8,7 @@ const HistoricCard = ({ stat }) => {
   const formatedDate = dateObj.toLocaleDateString("en-US", options);
 
   return (
-    <article className="bg-white mb-4 py-3 px-5 rounded-lg shadow-md">
+    <article className="card">
       <p className="text-red font-bold text-xs mb-1 italic">{formatedDate} </p>
       <div className="grid grid-cols-5 justify-self-start gap-8 uppercase text-xs font-bold">
         {HISTORIC_HEADING.map((item, i) => (

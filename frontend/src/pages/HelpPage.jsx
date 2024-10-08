@@ -1,9 +1,13 @@
-import React from 'react'
+import HelpContainer from "../components/help/HelpContainer";
 
 const HelpPage = () => {
-  return (
-    <div>HelpPage</div>
-  )
-}
+    return (
+      <div className='pt-6 text-slate-800 pb-16'>
+            <div className='container'>
+                <HelpContainer />
+            </div>
+        </div>
+    )
+};
 
-export default HelpPage
+export default HelpPage;
