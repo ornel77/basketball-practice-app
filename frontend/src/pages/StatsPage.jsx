@@ -1,8 +1,13 @@
 import React from 'react'
+import StatsContainer from '../components/stats/StatsContainer'
 
 const StatsPage = () => {
   return (
-    <div>StatsPage</div>
+    <div className='pt-6 text-slate-800 pb-16'>
+      <div className="container">
+        <StatsContainer />
+      </div>
+    </div>
   )
 }
 
