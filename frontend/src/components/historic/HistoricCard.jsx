@@ -10,12 +10,12 @@ const HistoricCard = ({ stat }) => {
   return (
     <article className="card">
       <p className="text-red font-bold text-xs mb-1 italic">{formatedDate} </p>
-      <div className="grid grid-cols-5 justify-self-start gap-8 uppercase text-xs font-bold">
+      <div className="grid grid-cols-5 gap-8 uppercase text-xs font-bold">
         {HISTORIC_HEADING.map((item, i) => (
           <span key={i}> {item} </span>
         ))}
       </div>
-      <div className="grid grid-cols-5 justify-self-start gap-8 mb-1 text-sm">
+      <div className="grid grid-cols-5 gap-8 mb-1 text-sm">
         <span> {stat.fieldAvg}% </span>
         <span> {stat.threeAvg}% </span>
         <span> {stat.ll}% </span>
