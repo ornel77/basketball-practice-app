@@ -143,4 +143,20 @@ body {
     .card {
       @apply bg-white mb-4 py-3 px-5 rounded-lg shadow-md;
     }
+
+    
 }
+
+@layer components {
+  .input {
+    @apply px-4 py-3 w-full rounded-md outline-none focus:ring focus:ring-green
+  }
+  .btn {
+    @apply px-4 py-3 w-full text-white rounded-lg uppercase font-bold cursor-pointer;
+  }
+}
+
+.gradient {
+      background: #CA4725;
+      background: linear-gradient(315deg, rgba(202, 71, 37, 1) 0%, rgba(65, 21, 48, 1) 50%);
+    }
