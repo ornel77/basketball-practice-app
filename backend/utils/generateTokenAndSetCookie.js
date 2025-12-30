@@ -5,7 +5,6 @@ export const generateTokenAndSetCookie = (res, userId) => {
         expiresIn: '1h'
     })
 
-    console.log("generate",token)
 
     res.cookie("token", token, {
         httpOnly: true, // security to prevent the cookie to be accessible to the client side (XSS attack)

@@ -56,7 +56,7 @@ export const login = async (req, res, next) => {
     if (!user) {
       return res
         .status(400)
-        .josn({ succes: false, message: "Invalid credentials" });
+        .json({ succes: false, message: "Invalid credentials" });
     }
 
     const isPasswordValid = await bcryptjs.compare(password, user.password);
@@ -67,12 +67,11 @@ export const login = async (req, res, next) => {
     }
 
     generateTokenAndSetCookie(res, user._id);
-    console.log(user)
-    const userSecure = { ...user._doc, password: undefined }
+    console.log(res, user);
     res.status(200).json({
       success: true,
       message: "User logged in",
-      // user: { ...user._doc, password: undefined },
+      user: { ...user._doc, password: undefined },
     });
   } catch (error) {
     console.log("error in loggin function", error);
