@@ -5,6 +5,7 @@ export const generateTokenAndSetCookie = (res, userId) => {
         expiresIn: '1h'
     })
 
+
     res.cookie("token", token, {
         httpOnly: true, // security to prevent the cookie to be accessible to the client side (XSS attack)
         secure : process.env.NODE_ENV === 'production', // on se met en mode https seulement si on est en production

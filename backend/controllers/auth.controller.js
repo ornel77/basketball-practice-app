@@ -2,17 +2,20 @@ import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
-export const signup = async (req, res, next) => {
+export const signup = async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
 
   try {
     if (!firstname || !lastname || !email || !password) {
-      return res.status(400).json({ success: false, message: "User already exists" });
-
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
     }
     const userAlreadyExist = await User.findOne({ email });
     if (userAlreadyExist) {
-      return res.status(400).json({ success: false, message: "User already exists" });
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
     }
 
     // hash password
@@ -51,16 +54,20 @@ export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).josn({ succes: false, message: "Invalid credentials" });
+      return res
+        .status(400)
+        .json({ succes: false, message: "Invalid credentials" });
     }
 
     const isPasswordValid = await bcryptjs.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(400).json({ succes: false, message: "Invalid credentials" });
+      return res
+        .status(400)
+        .json({ succes: false, message: "Invalid credentials" });
     }
 
     generateTokenAndSetCookie(res, user._id);
-
+    console.log(res, user);
     res.status(200).json({
       success: true,
       message: "User logged in",
@@ -76,4 +83,15 @@ export const logout = async (req, res, next) => {
     .clearCookie("token")
     .status(200)
     .json({ success: true, message: "User logged out" });
+};
+
+// called whenever we refresh the page
+export const checkAuth = (req, res) => {
+  try {
+    // send the user back to client it will give the authentificated user
+    res.status(200).json(req.user);
+  } catch (error) {
+    console.log("error in checkAuth controller", error.message);
+    res.status(500).json({ message: "internal server error" });
+  }
 };
