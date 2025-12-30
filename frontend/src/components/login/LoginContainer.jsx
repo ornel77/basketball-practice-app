@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useAuthStore } from "../../store/useAuthStore"
 
 const LoginContainer = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +9,12 @@ const LoginContainer = () => {
     password: ""
   })
 
-  const handleSubmit = () => {
-    return
+  const {login} = useAuthStore()
+
+  const handleSubmit = (e) => {
+    // TODO : validation
+    e.preventDefault()
+    login(formData)
   }
   return (
     <div className="container">

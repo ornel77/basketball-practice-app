@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import SessionPage from "./pages/SessionPage";
 import StatsPage from "./pages/StatsPage";
 import HelpPage from "./pages/HelpPage";
@@ -9,25 +9,43 @@ import RecapPage from "./pages/RecapPage";
 import AccountSettings from "./components/settings/subPages/AccountSettings";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-
+import { useAuthStore } from "./store/useAuthStore";
+import { useEffect } from "react";
 
 function App() {
-  const location = useLocation()
-  const HIDE_NAVBAR_ROUTES = ["/login", "/signup"]
-  const hideNavbar = HIDE_NAVBAR_ROUTES.includes(location.pathname)
+  const location = useLocation();
+  const HIDE_NAVBAR_ROUTES = ["/login", "/signup"];
+  const hideNavbar = HIDE_NAVBAR_ROUTES.includes(location.pathname);
+
+  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
   return (
-    
     <div className="bg-pink-100">
       <Routes>
-        <Route path="/" element={<SessionPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+        <Route
+          path="/"
+          element={authUser ? <SessionPage /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/login"
+          element={!authUser ? <LoginPage /> : <Navigate to={"/"} />}
+        />
+        <Route
+          path="/signup"
+          element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
+        />
         <Route path="/recap" element={<RecapPage />} />
         <Route path="/setting/account" element={<AccountSettings />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/historic" element={<HistoricPage />} />
         <Route path="/help" element={<HelpPage />} />
-        <Route path="/setting" element={<SettingPage />} />
+        <Route
+          path="/setting"
+          element={authUser ? <SettingPage /> : <Navigate to={"/login"} />}
+        />
       </Routes>
       {!hideNavbar && <MainNavbar />}
     </div>

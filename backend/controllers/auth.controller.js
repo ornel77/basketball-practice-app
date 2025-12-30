@@ -2,7 +2,7 @@ import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
-export const signup = async (req, res, next) => {
+export const signup = async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
 
   try {
@@ -67,11 +67,12 @@ export const login = async (req, res, next) => {
     }
 
     generateTokenAndSetCookie(res, user._id);
-
+    console.log(user)
+    const userSecure = { ...user._doc, password: undefined }
     res.status(200).json({
       success: true,
       message: "User logged in",
-      user: { ...user._doc, password: undefined },
+      // user: { ...user._doc, password: undefined },
     });
   } catch (error) {
     console.log("error in loggin function", error);

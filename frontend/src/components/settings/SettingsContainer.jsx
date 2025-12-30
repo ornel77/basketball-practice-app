@@ -1,7 +1,11 @@
 import {useNavigate} from 'react-router-dom'
+import { MdLogout } from "react-icons/md";
+import { useAuthStore } from '../../store/useAuthStore';
 
 const SettingsContainer = () => {
     const navigate = useNavigate()
+    const {logout} = useAuthStore()
+
   return (
     <div className="md:container">
         <h2 className="title">Settings</h2>
@@ -26,8 +30,12 @@ const SettingsContainer = () => {
                 Profile
             </article>
 
-            <article className="bg-white py-3 px-5 cursor-pointer shadow-md mb-4">
-                Profile
+            <article className="bg-white py-3 px-5 cursor-pointer shadow-md mb-4 flex gap-2 items-center text-red font-bold " onClick={logout}>
+                <div>
+                    <MdLogout size={24} />
+                </div>
+                <p>Logout</p>
+                
             </article>
         </div>
     </div>

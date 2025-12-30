@@ -1,11 +1,16 @@
+import { useAuthStore } from "../../store/useAuthStore";
+
 
 
 const SessionHeading = () => {
+  const {authUser} = useAuthStore()
+  console.table(authUser)
+
   return (
     <>
       <p className="text-xl font-bold mb-3">
         Hi,
-        <span className="italic">Adam</span>! 👋🏽{" "}
+        <span className="italic capitalize">{authUser?.firstname}</span>! 👋🏽{" "}
       </p>
       <h2 className="title">
         start a session

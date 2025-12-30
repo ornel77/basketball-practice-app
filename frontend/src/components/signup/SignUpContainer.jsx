@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../../store/useAuthStore";
 
 const SignUpContainer = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +10,12 @@ const SignUpContainer = () => {
     password: "",
   });
 
-  const handleSubmit = () => {
-    return
+  const {signup, isSigninUp} = useAuthStore()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // TODO : validation form
+    signup(formData)
   }
 
   return (
@@ -50,6 +55,7 @@ const SignUpContainer = () => {
             setFormData({ ...formData, password: e.target.value })
           }
         />
+        {/* TODO : Loading state */}
         <button type="submit" className="btn bg-green">
           Create an account
         </button>
