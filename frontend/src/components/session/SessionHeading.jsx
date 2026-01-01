@@ -4,7 +4,6 @@ import { useAuthStore } from "../../store/useAuthStore";
 
 const SessionHeading = () => {
   const {authUser} = useAuthStore()
-  console.table(authUser)
 
   return (
     <>

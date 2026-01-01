@@ -10,6 +10,7 @@ import { generatePercent } from "../../utils/generatePercent";
 
 import { SPOT_ID } from "../../utils/data";
 import { useNavigate } from "react-router-dom";
+import { useStatsStore } from "../../store/useStatsStore";
 
 const SessionForm = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const SessionForm = () => {
   const { inputRangeValues, resetRangeValue } = useInputRangeStore();
   const { inputNumberValues, initializeValues, resetNumberValue } =
     useInputNumberStore();
+  const { registerStat } = useStatsStore();
   const { setRecap, recap } = useRecapStore();
 
   const currentDate = Date.now();
@@ -42,9 +44,12 @@ const SessionForm = () => {
     e.preventDefault();
     const average = generatePercent(inputNumberValues, inputRangeValues);
     setRecap({ ...average, sessionDate: selectedDate, comment });
-    // console.log({ ...average, selectedDate });
-    // console.log(inputNumberValues);
-    console.log(recap);
+    const payload = {
+      ...average,
+      sessionDate: selectedDate,
+      comment,
+    };
+    registerStat(payload);
     resetNumberValue();
     resetRangeValue();
     navigate("/recap");
