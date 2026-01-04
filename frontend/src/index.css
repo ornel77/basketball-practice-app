@@ -160,3 +160,8 @@ body {
       background: #CA4725;
       background: linear-gradient(315deg, rgba(202, 71, 37, 1) 0%, rgba(65, 21, 48, 1) 50%);
     }
+
+.bg-welcome {
+  background: url("/welcome_vide.png") no-repeat center/cover;
+  height: 100vh;
+}
