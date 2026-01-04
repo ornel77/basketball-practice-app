@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 const MainNavbar = () => {
   const NAVBAR_ITEMS = [
-    { name: "Session", icon: MdOutlineSportsBasketball, href: "/" },
+    { name: "Session", icon: MdOutlineSportsBasketball, href: "/homepage" },
     { name: "Statistics", icon: IoIosStats, href: "/stats" },
     { name: "Historic", icon: MdOutlineHistory, href: "/historic" },
     { name: "Help", icon: IoMdHelpCircleOutline, href: "/help" },

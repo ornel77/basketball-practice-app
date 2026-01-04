@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import useInputRangeStore from "../../store/useInputRangeStore";
 import useInputNumberStore from "../../store/useInputNumberStore";
-import useRecapStore from "../../store/useRecapStore";
+// import useRecapStore from "../../store/useRecapStore";
 
 import { generatePercent } from "../../utils/generatePercent";
 
@@ -19,7 +19,7 @@ const SessionForm = () => {
   const { inputNumberValues, initializeValues, resetNumberValue } =
     useInputNumberStore();
   const { registerStat } = useStatsStore();
-  const { setRecap, recap } = useRecapStore();
+  // const { setRecap, recap } = useRecapStore();
 
   const currentDate = Date.now();
   const formattedDate = new Intl.DateTimeFormat("en-GB", {
@@ -43,7 +43,7 @@ const SessionForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const average = generatePercent(inputNumberValues, inputRangeValues);
-    setRecap({ ...average, sessionDate: selectedDate, comment });
+    // setRecap({ ...average, sessionDate: selectedDate, comment });
     const payload = {
       ...average,
       sessionDate: selectedDate,

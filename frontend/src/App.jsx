@@ -11,10 +11,11 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
+import WelcomePage from "./pages/WelcomePage";
 
 function App() {
   const location = useLocation();
-  const HIDE_NAVBAR_ROUTES = ["/login", "/signup"];
+  const HIDE_NAVBAR_ROUTES = ["/login", "/signup", "/"];
   const hideNavbar = HIDE_NAVBAR_ROUTES.includes(location.pathname);
 
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -22,20 +23,22 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
   return (
     <div className="bg-pink-100">
       <Routes>
+        <Route path="/" element={<WelcomePage />} />
         <Route
-          path="/"
+          path="/homepage"
           element={authUser ? <SessionPage /> : <Navigate to={"/login"} />}
         />
         <Route
           path="/login"
-          element={!authUser ? <LoginPage /> : <Navigate to={"/"} />}
+          element={!authUser ? <LoginPage /> : <Navigate to={"/homepage"} />}
         />
         <Route
           path="/signup"
-          element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
+          element={!authUser ? <SignUpPage /> : <Navigate to={"/homepage"} />}
         />
         <Route path="/recap" element={<RecapPage />} />
         <Route path="/setting/account" element={<AccountSettings />} />
@@ -44,7 +47,7 @@ function App() {
         <Route path="/help" element={<HelpPage />} />
         <Route
           path="/setting"
-          element={authUser ? <SettingPage /> : <Navigate to={"/login"} />}
+          element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
         />
       </Routes>
       {!hideNavbar && <MainNavbar />}
