@@ -3,10 +3,11 @@ import { Stat } from "../models/stat.model.js";
 import { User } from "../models/user.model.js";
 
 /* ------------------------------- SELECT ALL ------------------------------- */
-export const getAllStats = async (req, res, next) => {
+export const getAllStats = async (req, res) => {
+  const user = req.user;
   try {
-    const stats = await Stat.find({});
-    res.status(200).json({ success: true, data: stats });
+    const stats = await Stat.find({ user: user }).sort({ workoutDate: -1 });
+    res.status(200).json({ success: true, data: stats, count: stats.length });
   } catch (error) {
     console.log("error in getAllStats function", error);
     res.status(500).json({ success: false, message: error.message });
@@ -15,7 +16,8 @@ export const getAllStats = async (req, res, next) => {
 
 /* ------------------------------- SELECT ONE ------------------------------- */
 export const getOneStat = async (req, res, next) => {
-  const { id } = req.params;
+    const user = req.user;
+
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ success: false, message: "Invalid ID" });
@@ -35,34 +37,38 @@ export const getOneStat = async (req, res, next) => {
 };
 
 /* ------------------------------- CREATE STAT ------------------------------ */
-export const createStat = async (req, res, next) => {
-  const stat = req.body;
-  const { userId } = req.params;
+export const createStat = async (req, res) => {
+  const { fieldAvg, threeAvg, ll, lr, ft, sessionDate, comment } = req.body;
+  const user = req.user;
 
   try {
-    // check if the user exists
-    const user = await User.findById(userId);
-    if (!user) {
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found" });
-    }
     if (
-      !stat.fieldGoal ||
-      !stat.threePoint ||
-      !stat.layupLeft ||
-      !stat.layupRight ||
-      !stat.freeThrow
+      fieldAvg == null ||
+      threeAvg == null ||
+      ll == null ||
+      lr == null ||
+      ft == null
     ) {
       return res
         .status(400)
         .json({ success: false, message: "Please profide all fields" });
     }
 
-    const newStat = new Stat({ ...stat, user: userId });
+    const newStat = new Stat({
+      fieldGoal: fieldAvg,
+      threePoint: threeAvg,
+      layupLeft: ll,
+      layupRight: lr,
+      freeThrow: ft,
+      workoutDate: sessionDate,
+      comment: comment,
+      user: user._id,
+    });
+
+    console.log("newStat dans le controller", newStat)
 
     await newStat.save();
-    await User.findByIdAndUpdate(userId, { $push: { stats: newStat._id } });
+    // await User.findByIdAndUpdate(userId, { $push: { stats: newStat._id } });
 
     res.status(201).json({
       success: true,

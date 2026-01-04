@@ -7,7 +7,6 @@ export const protectRoute = async (req, res, next) => {
     // check if there is a token or not
     // we write jwt cause thats how we called our token
     const token = req.cookies.token; //to grab this token we need cookie parser
-    console.log("protect",token)
 
     if (!token) {
       return res

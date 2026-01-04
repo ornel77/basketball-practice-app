@@ -1,14 +1,15 @@
 
-import { STATS } from "../../utils/data";
+import { useEffect } from "react";
+import { useStatsStore } from "../../store/useStatsStore";
 import HistoricCard from "./HistoricCard";
 
 const HistoricContainer = () => {
-  const sortedStat = STATS.sort((a, b) => {
-    const dateA = new Date(a.sessionDate);
-    const dateB = new Date(b.sessionDate);
-    return dateB - dateA;
-  });
+  const {stats, fetchStats} = useStatsStore()
 
+  useEffect(() => {
+    fetchStats()
+  }, [fetchStats])
+  
   return (
     <>
       <h2 className="title">Historic</h2>
@@ -17,7 +18,7 @@ const HistoricContainer = () => {
         className="mt-10
       "
       >
-        {sortedStat.map((stat, i) => (
+        {stats.map((stat, i) => (
           <HistoricCard stat={stat} key={i} />
         ))}
       </div>
