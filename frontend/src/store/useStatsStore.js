@@ -3,6 +3,7 @@ import { axiosInstance } from "../utils/axios";
 
 export const useStatsStore = create((set) => ({
   stats: [],
+  lastCreatedStat: null,
   isCreating: false,
   isLoading: false,
 
@@ -12,7 +13,8 @@ export const useStatsStore = create((set) => ({
       const res = await axiosInstance.post(`/stats/user`, data);
       console.log("registerStat store", res.data);
       set((state) =>({
-        stats: [...state.stats, res.data.data]
+        stats: [...state.stats, res.data.data],
+        lastCreatedStat: res.data.data,
       }))
     } catch (error) {
       console.log("error in register stat store", error)
