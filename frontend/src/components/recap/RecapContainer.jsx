@@ -28,7 +28,7 @@ const RecapContainer = () => {
     <div>
       {/* Redirect button */}
       <div>
-        <button onClick={() => navigate("/homepage")}>
+        <button onClick={() => navigate("/session")}>
           <FaArrowLeft size={28} />
         </button>
       </div>

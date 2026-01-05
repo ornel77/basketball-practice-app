@@ -8,7 +8,7 @@ const WelcomeContainer = () => {
   const navigate = useNavigate();
   const handleEnterHomepage = () => {
     if (authUser) {
-      navigate("/homepage");
+      navigate("/session");
     } else {
       navigate("/login");
     }
