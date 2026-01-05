@@ -165,3 +165,10 @@ body {
   background: url("/welcome_vide.png") no-repeat center/cover;
   height: 100vh;
 }
+
+@media (min-width: 1024px) {
+  .bg-welcome {
+    background: url("/welcome_desktop.png") no-repeat center/cover;
+
+  }
+}
