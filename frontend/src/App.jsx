@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import SessionPage from "./pages/SessionPage";
 import StatsPage from "./pages/StatsPage";
@@ -29,22 +30,61 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route
-          path="/homepage"
-          element={authUser ? <SessionPage /> : <Navigate to={"/login"} />}
+          path="/session"
+          element={
+            <ProtectedRoute>
+              <SessionPage />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="/login"
-          element={!authUser ? <LoginPage /> : <Navigate to={"/homepage"} />}
+          element={!authUser ? <LoginPage /> : <Navigate to={"/session"} />}
         />
         <Route
           path="/signup"
-          element={!authUser ? <SignUpPage /> : <Navigate to={"/homepage"} />}
+          element={!authUser ? <SignUpPage /> : <Navigate to={"/session"} />}
         />
-        <Route path="/recap" element={<RecapPage />} />
-        <Route path="/setting/account" element={<AccountSettings />} />
-        <Route path="/stats" element={<StatsPage />} />
-        <Route path="/historic" element={<HistoricPage />} />
-        <Route path="/help" element={<HelpPage />} />
+        <Route
+          path="/recap"
+          element={
+            <ProtectedRoute>
+              <RecapPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/setting/account"
+          element={
+            <ProtectedRoute>
+              <AccountSettings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/stats"
+          element={
+            <ProtectedRoute>
+              <StatsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/historic"
+          element={
+            <ProtectedRoute>
+              <HistoricPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/help"
+          element={
+            <ProtectedRoute>
+              <HelpPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/setting"
           element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
@@ -56,3 +96,13 @@ function App() {
 }
 
 export default App;
+
+const ProtectedRoute = ({ children }) => {
+  const { authUser } = useAuthStore();
+
+  if (!authUser) {
+    return <Navigate to={"/login"} />;
+  }
+
+  return children;
+};
