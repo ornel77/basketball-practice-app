@@ -6,11 +6,6 @@ export const signup = async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
 
   try {
-    if (!firstname || !lastname || !email || !password) {
-      return res
-        .status(400)
-        .json({ success: false, message: "All the fields are required" });
-    }
     const userAlreadyExist = await User.findOne({ email });
     if (userAlreadyExist) {
       return res
@@ -56,7 +51,7 @@ export const login = async (req, res, next) => {
     if (!user) {
       return res
         .status(400)
-        .json({ succes: false, message: "Invalid credentials" });
+        .json({ success: false, message: "Invalid credentials" });
     }
 
     const isPasswordValid = await bcryptjs.compare(password, user.password);

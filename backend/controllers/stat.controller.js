@@ -16,7 +16,7 @@ export const getAllStats = async (req, res) => {
 
 /* ------------------------------- SELECT ONE ------------------------------- */
 export const getOneStat = async (req, res, next) => {
-    const user = req.user;
+  const user = req.user;
 
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -42,18 +42,6 @@ export const createStat = async (req, res) => {
   const user = req.user;
 
   try {
-    if (
-      fieldAvg == null ||
-      threeAvg == null ||
-      ll == null ||
-      lr == null ||
-      ft == null
-    ) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Please provide all fields" });
-    }
-
     const newStat = new Stat({
       fieldGoal: fieldAvg,
       threePoint: threeAvg,
@@ -65,10 +53,9 @@ export const createStat = async (req, res) => {
       user: user._id,
     });
 
-    console.log("newStat dans le controller", newStat)
+    console.log("newStat dans le controller", newStat);
 
     await newStat.save();
-    // await User.findByIdAndUpdate(userId, { $push: { stats: newStat._id } });
 
     res.status(201).json({
       success: true,
