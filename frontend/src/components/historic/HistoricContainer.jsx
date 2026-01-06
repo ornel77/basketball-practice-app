@@ -12,7 +12,7 @@ const HistoricContainer = () => {
   
   return (
     <>
-      <h2 className="title">Historic</h2>
+      <h2 className="title">Historic Container</h2>
 
       <div
         className="mt-10
