@@ -7,7 +7,7 @@ import {
   updateStat,
 } from "../controllers/stat.controller.js";
 import { protectRoute } from "../middleware/auth.middleware.js";
-import { statValidator } from "../validation/statValidation.js";
+import { statValidator } from "../validation/statValidator.js";
 
 const router = Router();
 
