@@ -51,7 +51,7 @@ export const createStat = async (req, res) => {
     ) {
       return res
         .status(400)
-        .json({ success: false, message: "Please profide all fields" });
+        .json({ success: false, message: "Please provide all fields" });
     }
 
     const newStat = new Stat({

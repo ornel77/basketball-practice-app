@@ -9,7 +9,7 @@ export const signup = async (req, res) => {
     if (!firstname || !lastname || !email || !password) {
       return res
         .status(400)
-        .json({ success: false, message: "User already exists" });
+        .json({ success: false, message: "All the fields are required" });
     }
     const userAlreadyExist = await User.findOne({ email });
     if (userAlreadyExist) {
