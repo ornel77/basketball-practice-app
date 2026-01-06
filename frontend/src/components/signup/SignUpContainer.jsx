@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
+import toast from "react-hot-toast";
 
 const SignUpContainer = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +11,33 @@ const SignUpContainer = () => {
     password: "",
   });
 
-  const {signup, isSigninUp} = useAuthStore()
+  const { signup, isSigninUp } = useAuthStore();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // TODO : validation form
-    signup(formData)
-  }
+  const validationForm = () => {
+    if (!formData.firstname.trim()) return "First name is required";
+    if (!formData.lastname.trim()) return "Last name is required";
+    if (!formData.email.trim()) return "Email is required";
+    if (!/\S+@\S+\.\S+/.test(formData.email)) return "Invalid email format";
+    if (!formData.password) return "Password is required";
+    if (formData.password.length < 6)
+      return "Password must be at least 6 characters";
+
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const error = validationForm(formData);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    const success = await signup(formData);
+    if (success) {
+      toast.success("Account created successfully");
+    }
+  };
 
   return (
     <div className="container">
@@ -43,9 +64,7 @@ const SignUpContainer = () => {
           type="mail"
           className="input"
           placeholder="Email..."
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
         <input
           type="password"

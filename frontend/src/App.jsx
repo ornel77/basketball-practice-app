@@ -14,6 +14,9 @@ import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import WelcomePage from "./pages/WelcomePage";
 
+import { Toaster } from "react-hot-toast"
+
+
 function App() {
   const location = useLocation();
   const HIDE_NAVBAR_ROUTES = ["/login", "/signup", "/"];
@@ -91,6 +94,7 @@ function App() {
         />
       </Routes>
       {!hideNavbar && <MainNavbar />}
+      <Toaster />
     </div>
   );
 }
