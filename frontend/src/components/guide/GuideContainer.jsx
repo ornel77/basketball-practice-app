@@ -11,7 +11,7 @@ const GuideContainer = () => {
           The workout is simple: take <span className="font-bold">5 consecutive shots from each spot</span> and note the score on the app.
         </p>
         <p>
-          This will give you yoor shooting percentages for <span className="font-bold">field goals</span> and <span className="font-bold">3-pointers</span>, so you can easily track your progress over time.
+          This will give you your shooting percentages for <span className="font-bold">field goals</span> and <span className="font-bold">3-pointers</span>, so you can easily track your progress over time.
         </p>
         <div>
           The training also includes:
@@ -28,8 +28,8 @@ const GuideContainer = () => {
         </p>
         <p>Stay consistent, trust the work, and enjoy the grind 🏀 🔥.</p>
       </div>
-      <img src="/joueuse.png" alt="joueuse" className="absolute bottom-10 right-0 opacity-[7%]" />
-      <img src="/joueur.png" alt="joueuse" className="absolute top-0 opacity-[7%] w-28 left-0" />
+      <img src="/joueuse.png" alt="joueuse" className="absolute bottom-10 right-0 opacity-[9%]" />
+      <img src="/joueur.png" alt="joueuse" className="absolute top-0 opacity-[9%] w-28 left-0" />
     </div>
   );
 };
