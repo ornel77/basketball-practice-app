@@ -11,7 +11,7 @@ const MainNavbar = () => {
     { name: "Session", icon: MdOutlineSportsBasketball, href: "/session" },
     { name: "Statistics", icon: IoIosStats, href: "/stats" },
     { name: "Historic", icon: MdOutlineHistory, href: "/historic" },
-    { name: "Help", icon: IoMdHelpCircleOutline, href: "/help" },
+    { name: "Guide", icon: IoMdHelpCircleOutline, href: "/guide" },
     { name: "Setting", icon: MdOutlineSettings, href: "/setting" },
   ];
   return (
