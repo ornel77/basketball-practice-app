@@ -1,10 +1,10 @@
 import SliderInput from "./SliderInput";
 import NavSession from "./NavSession";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import useInputRangeStore from "../../store/useInputRangeStore";
 import useInputNumberStore from "../../store/useInputNumberStore";
-// import useRecapStore from "../../store/useRecapStore";
 
 import { generatePercent } from "../../utils/generatePercent";
 
@@ -38,21 +38,41 @@ const SessionForm = () => {
 
   useEffect(() => {
     initializeValues(SPOT_ID, 0);
-  }, [initializeValues, SPOT_ID]);
+  }, [initializeValues , SPOT_ID]);
 
-  const handleSubmit = (e) => {
+  const average = generatePercent(inputNumberValues, inputRangeValues);
+  const validateForm = () => {
+    if (
+      average.fieldAvg == null ||
+      average.threeAvg == null ||
+      average.ll == null ||
+      average.lr == null ||
+      average.ft == null
+    )
+      return "All fields are required frontend"
+    if (comment.length > 100)
+      return "The comment must be 100 characters max"
+    return null;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const average = generatePercent(inputNumberValues, inputRangeValues);
-    // setRecap({ ...average, sessionDate: selectedDate, comment });
+    const error = validateForm()
+    if(error) {
+      toast.error(error)
+      return
+    }
     const payload = {
       ...average,
       sessionDate: selectedDate,
       comment,
     };
-    registerStat(payload);
-    resetNumberValue();
-    resetRangeValue();
-    navigate("/recap");
+    const success = await registerStat(payload)
+    if (success) {
+      resetNumberValue();
+      resetRangeValue();
+      navigate("/recap");
+    }
   };
 
   const handleInputDateChange = (e) => {
