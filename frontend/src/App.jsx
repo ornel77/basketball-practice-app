@@ -2,7 +2,6 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import SessionPage from "./pages/SessionPage";
 import StatsPage from "./pages/StatsPage";
-import HelpPage from "./pages/HelpPage";
 import HistoricPage from "./pages/HistoricPage";
 import SettingPage from "./pages/SettingPage";
 import MainNavbar from "./components/common/MainNavbar";
@@ -15,6 +14,7 @@ import { useEffect } from "react";
 import WelcomePage from "./pages/WelcomePage";
 
 import { Toaster } from "react-hot-toast"
+import GuidePage from "./pages/GuidePage";
 
 
 function App() {
@@ -81,10 +81,10 @@ function App() {
           }
         />
         <Route
-          path="/help"
+          path="/guide"
           element={
             <ProtectedRoute>
-              <HelpPage />
+              <GuidePage />
             </ProtectedRoute>
           }
         />

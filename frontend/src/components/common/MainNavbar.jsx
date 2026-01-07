@@ -11,12 +11,12 @@ const MainNavbar = () => {
     { name: "Session", icon: MdOutlineSportsBasketball, href: "/session" },
     { name: "Statistics", icon: IoIosStats, href: "/stats" },
     { name: "Historic", icon: MdOutlineHistory, href: "/historic" },
-    { name: "Help", icon: IoMdHelpCircleOutline, href: "/help" },
+    { name: "Guide", icon: IoMdHelpCircleOutline, href: "/guide" },
     { name: "Setting", icon: MdOutlineSettings, href: "/setting" },
   ];
   return (
     <div className="bg-purple text-white fixed bottom-0 w-full right-0 h-16  py-2">
-      <nav className="flex justify-between items-center nav-container">
+      <nav className="flex justify-between items-center nav-container z-50">
         {NAVBAR_ITEMS.map((item, index) => (
           <NavLink
             to={item.href}
