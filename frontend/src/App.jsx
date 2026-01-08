@@ -35,9 +35,9 @@ function App() {
         <Route
           path="/session"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <SessionPage />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
@@ -67,30 +67,31 @@ function App() {
         <Route
           path="/stats"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <StatsPage />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/historic"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <HistoricPage />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/guide"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <GuidePage />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/setting"
-          element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
+          element={<SettingPage />}
+          // element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
         />
       </Routes>
       {!hideNavbar && <MainNavbar />}
