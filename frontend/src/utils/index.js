@@ -1,5 +1,3 @@
-import Avatar from '/assets/image/avatar.png'
-export const avatar = Avatar
 
 
 
