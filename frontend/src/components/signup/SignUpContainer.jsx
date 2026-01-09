@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
 import toast from "react-hot-toast";
+import { Loader2 } from "lucide-react";
 
 const SignUpContainer = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,8 @@ const SignUpContainer = () => {
 
     return null;
   };
+
+  const loading = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,8 +78,18 @@ const SignUpContainer = () => {
           }
         />
         {/* TODO : Loading state */}
-        <button type="submit" className="btn bg-green">
-          Create an account
+        <button
+          type="submit"
+          className={`btn bg-green ${isSigninUp && "bg-slate-400"}`}
+          disabled={isSigninUp}
+        >
+          {isSigninUp ? (
+            <div className="flex justify-center">
+              <Loader2 className="size-5 animate-spin" />
+            </div>
+          ) : (
+            "Create an account"
+          )}
         </button>
       </form>
       <p className="text-white text-center mt-4">
