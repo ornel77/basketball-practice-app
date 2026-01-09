@@ -29,7 +29,7 @@ const GuideContainer = () => {
         <p>Stay consistent, trust the work, and enjoy the grind 🏀 🔥.</p>
       </div>
       <img src="/joueuse.png" alt="joueuse" className="fixed bottom-10 right-0 opacity-[9%]" />
-      <img src="/joueur.png" alt="joueuse" className="fixed top-0 opacity-[9%] w-28 left-0" />
+      <img src="/panier.png" alt="joueuse" className="fixed -top-4 opacity-[9%] w-52 -left-10" />
     </div>
   );
 };
