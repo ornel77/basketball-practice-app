@@ -27,7 +27,8 @@ export const hTL = halfThreeL
 import zero1R from '/assets/image/zero1R.svg'
 import zero2R from '/assets/image/zero2R.svg'
 import zero3R from '/assets/image/zero3R.svg'
-import zeroThreeR from '/assets/image/zeroThreeR.svg'
+import zeroThreeR from '/assets/image/zero3Rtest.svg'
+// import zeroThreeR from '/assets/image/zeroThreeR.svg'
 
 export const z1R = zero1R
 export const z2R = zero2R
