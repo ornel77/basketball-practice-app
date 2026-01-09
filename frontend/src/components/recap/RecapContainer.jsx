@@ -1,6 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa";
 import RecapCard from "./RecapCard";
-import { avatar } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import { useStatsStore } from "../../store/useStatsStore";
 import { useAuthStore } from "../../store/useAuthStore";
@@ -35,7 +34,7 @@ const RecapContainer = () => {
 
       {/* Avatar */}
       <div className="flex justify-center py-4">
-        <img src={avatar} alt="" className="w-24" />
+        {/* <img src={avatar} alt="" className="w-24" /> */}
       </div>
 
       <h2 className="title">
