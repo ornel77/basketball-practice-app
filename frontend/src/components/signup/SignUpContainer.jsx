@@ -26,7 +26,6 @@ const SignUpContainer = () => {
     return null;
   };
 
-  const loading = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

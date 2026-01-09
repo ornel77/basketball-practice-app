@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
 import toast from "react-hot-toast";
+import { Loader2 } from "lucide-react";
 
 const LoginContainer = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +11,12 @@ const LoginContainer = () => {
     password: "",
   });
 
-  const { login } = useAuthStore();
+  const { login, isLogginIn } = useAuthStore();
 
   const validateForm = () => {
-    if (!formData.email.trim()) return "Email is required"
-    if (!/\S+@\S+\.\S+/.test(formData.email))
-      return "Invalid email format"
-    if (!formData.password) return "Password is required"
+    if (!formData.email.trim()) return "Email is required";
+    if (!/\S+@\S+\.\S+/.test(formData.email)) return "Invalid email format";
+    if (!formData.password) return "Password is required";
 
     return null;
   };
@@ -25,14 +25,14 @@ const LoginContainer = () => {
     // TODO : validation
     e.preventDefault();
 
-    const error = validateForm()
-    if(error) {
-      return toast.error(error)
+    const error = validateForm();
+    if (error) {
+      return toast.error(error);
     }
 
-    const success = await login(formData)
+    const success = await login(formData);
     if (success) {
-      return toast.success("logged in successfully")
+      return toast.success("logged in successfully");
     }
   };
 
@@ -53,8 +53,15 @@ const LoginContainer = () => {
             setFormData({ ...formData, password: e.target.value })
           }
         />
-        <button type="submit" className="btn bg-green">
-          let's go
+        <button type="submit" className={`btn bg-green ${isLogginIn && "bg-slate-400"}`} disabled={isLogginIn}>
+          {isLogginIn ? (
+            <div className="flex justify-center items-center">
+              {" "}
+              <Loader2 />{" "}
+            </div>
+          ) : (
+            "let's go"
+          )}
         </button>
       </form>
       <p className="text-white text-center mt-4">
