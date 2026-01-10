@@ -1,18 +1,19 @@
-
 import { useEffect } from "react";
 import { useStatsStore } from "../../store/useStatsStore";
 import HistoricCard from "./HistoricCard";
+import LoaderContainer from "../common/LoaderContainer";
 
 const HistoricContainer = () => {
-  const {stats, fetchStats} = useStatsStore()
+  const { stats, fetchStats, isLoading } = useStatsStore();
 
   useEffect(() => {
-    fetchStats()
-  }, [fetchStats])
-  
+    fetchStats();
+  }, [fetchStats]);
+
   return (
     <>
       <h2 className="title">Historic</h2>
+      {isLoading && <LoaderContainer />}
 
       <div
         className="mt-10
