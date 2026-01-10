@@ -15,6 +15,7 @@ import WelcomePage from "./pages/WelcomePage";
 
 import { Toaster } from "react-hot-toast"
 import GuidePage from "./pages/GuidePage";
+import LoaderContainer from "./components/common/LoaderContainer";
 
 
 function App() {
@@ -27,6 +28,11 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+
+  if(isCheckingAuth && !authUser) {
+    return <LoaderContainer /> 
+  }
 
   return (
     <div className="bg-pink-100">
