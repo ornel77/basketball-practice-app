@@ -154,6 +154,9 @@ body {
   .btn {
     @apply px-4 py-3 w-full text-white rounded-lg uppercase font-bold cursor-pointer;
   }
+  .btn-stats {
+    @apply rounded-xl flex-1 cursor-pointer
+  }
 }
 
 .gradient {

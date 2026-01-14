@@ -2,7 +2,8 @@
 import ReactChartsReact from "echarts-for-react";
 
 const StatsItem = ({ title, valueKey, color, stats }) => {
-  console.log(stats);
+
+  
   const option = {
     tooltip: {
       trigger: "axis",
@@ -60,7 +61,7 @@ const StatsItem = ({ title, valueKey, color, stats }) => {
 
   return (
     <div className="bg-white rounded-xl p-4 shadow-lg">
-      <h2 className=" text-white bg-violet-400 w-fit  px-5 rounded-xl shadow-md shadow-violet-100 mb-3">
+      <h2 className="text-white bg-green w-fit  px-5 rounded-xl shadow-md shadow-violet-100 mb-3">
         {title}
       </h2>
       <ReactChartsReact

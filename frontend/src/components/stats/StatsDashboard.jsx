@@ -1,11 +1,16 @@
 import { useMemo, useState } from "react";
-import { getCalendarMonthStat, getCalendarWeekStat, getYearStats } from "../../utils/stats";
-import StatsItem from "./StatsItem"
+import {
+  getCalendarMonthStat,
+  getCalendarWeekStat,
+  getYearStats,
+} from "../../utils/stats";
+import StatsItem from "./StatsItem";
 import { useStatsStore } from "../../store/useStatsStore";
+
 const StatsDashboard = () => {
   const [period, setPeriod] = useState("7d");
-  const {isLoading, stats} = useStatsStore()
-  
+  const { stats } = useStatsStore();
+
   const sortedStat = [...stats].sort((a, b) => {
     const dateA = new Date(a.workoutDate);
     const dateB = new Date(b.workoutDate);
@@ -17,28 +22,31 @@ const StatsDashboard = () => {
     if (period == "1y") return getYearStats(sortedStat);
   }, [period, sortedStat]);
 
+  const tabPeriod = [
+    { label: "7d", tabName: "7d" },
+    { label: "1m", tabName: "1m" },
+    { label: "1y", tabName: "1y" },
+  ];
+
+  const handlePeriod = (tab) => {
+    if (tab === period) return;
+    setPeriod(tab);
+  };
+
   return (
-    <div className="pt-12 max-w-87.5 mx-auto w-full">
-      <div className="flex max-w-xs mx-auto w-full gap-2.5 mb-5">
-        
-        <button
-          onClick={() => setPeriod("7d")}
-          className="border p-2 rounded-md bg-violet-600 text-white flex-1 cursor-pointer"
-        >
-          7d
-        </button>
-        <button
-          onClick={() => setPeriod("1m")}
-          className="border p-2 rounded-md bg-violet-600 text-white flex-1 cursor-pointer"
-        >
-          1m
-        </button>
-        <button
-          onClick={() => setPeriod("1y")}
-          className="border p-2 rounded-md bg-violet-600 text-white flex-1 cursor-pointer"
-        >
-          1y
-        </button>
+    <div className="pt-12 pb-10">
+      <div className="flex gap-2.5 mb-5 bg-white p-1.5 rounded-xl">
+        {tabPeriod.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => handlePeriod(tab.tabName)}
+            className={`btn-stats ${
+              period === tab.tabName ? "bg-red text-white" : ""
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
       <div className="space-y-4">
         <StatsItem
@@ -74,5 +82,5 @@ const StatsDashboard = () => {
       </div>
     </div>
   );
-}
-export default StatsDashboard
+};
+export default StatsDashboard;
