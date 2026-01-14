@@ -57,9 +57,9 @@ function App() {
         <Route
           path="/recap"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <RecapPage />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
