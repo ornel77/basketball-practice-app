@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import ReactChartsReact from "echarts-for-react";
+import { useMemo } from "react";
 
 const StatsItem = ({ title, valueKey, color, stats }) => {
 
   
-  const option = {
+  const option = useMemo(() => ({
     tooltip: {
       trigger: "axis",
     },
@@ -57,7 +58,7 @@ const StatsItem = ({ title, valueKey, color, stats }) => {
         data: stats.map((d) => [d.workoutDate, d[valueKey]]),
       },
     ],
-  };
+  }), [valueKey, color, stats])
 
   return (
     <div className="bg-white rounded-xl p-4 shadow-lg">
@@ -68,6 +69,7 @@ const StatsItem = ({ title, valueKey, color, stats }) => {
         option={option}
         opts={{ renderer: "canvas" }}
         style={{ height: "154px", width: "100%" }}
+        lazyUpdate={true}
       />
     </div>
   );

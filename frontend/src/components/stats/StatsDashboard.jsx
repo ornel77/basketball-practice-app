@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   getCalendarMonthStat,
   getCalendarWeekStat,
@@ -6,10 +6,17 @@ import {
 } from "../../utils/stats";
 import StatsItem from "./StatsItem";
 import { useStatsStore } from "../../store/useStatsStore";
+import LoaderContainer from "../common/LoaderContainer"
 
 const StatsDashboard = () => {
   const [period, setPeriod] = useState("7d");
-  const { stats } = useStatsStore();
+  const { stats, fetchStats, isLoading } = useStatsStore();
+  
+  useEffect(() => {
+    if (!stats || stats.length === 0) {
+      fetchStats();
+    }
+  }, [stats, fetchStats]);
 
   const sortedStat = [...stats].sort((a, b) => {
     const dateA = new Date(a.workoutDate);
@@ -23,9 +30,9 @@ const StatsDashboard = () => {
   }, [period, sortedStat]);
 
   const tabPeriod = [
-    { label: "7d", tabName: "7d" },
-    { label: "1m", tabName: "1m" },
-    { label: "1y", tabName: "1y" },
+    { label: "1 week", tabName: "7d" },
+    { label: "1 month", tabName: "1m" },
+    { label: "1 year", tabName: "1y" },
   ];
 
   const handlePeriod = (tab) => {
@@ -33,12 +40,14 @@ const StatsDashboard = () => {
     setPeriod(tab);
   };
 
+  if (isLoading) return <LoaderContainer />
+
   return (
     <div className="pt-12 pb-10">
       <div className="flex gap-2.5 mb-5 bg-white p-1.5 rounded-xl">
-        {tabPeriod.map((tab) => (
+        {tabPeriod.map((tab, i) => (
           <button
-            key={tab}
+            key={i}
             onClick={() => handlePeriod(tab.tabName)}
             className={`btn-stats ${
               period === tab.tabName ? "bg-red text-white" : ""
