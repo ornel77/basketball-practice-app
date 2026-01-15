@@ -61,8 +61,8 @@ const StatsItem = ({ title, valueKey, color, stats }) => {
   }), [valueKey, color, stats])
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-lg">
-      <h2 className="text-white bg-green w-fit  px-5 rounded-xl shadow-md shadow-violet-100 mb-3">
+    <div className="bg-white rounded-xl p-4 shadow-xl">
+      <h2 className=" w-fit px-3 rounded-sm font-semibold py-1 mb-3 bg-blue-100 text-blue-800 text-xs">
         {title}
       </h2>
       <ReactChartsReact

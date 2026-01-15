@@ -6,12 +6,18 @@ import {
 } from "../../utils/stats";
 import StatsItem from "./StatsItem";
 import { useStatsStore } from "../../store/useStatsStore";
-import LoaderContainer from "../common/LoaderContainer"
+import LoaderContainer from "../common/LoaderContainer";
+
+const tabPeriod = [
+  { label: "1 week", tabName: "7d" },
+  { label: "1 month", tabName: "1m" },
+  { label: "1 year", tabName: "1y" },
+];
 
 const StatsDashboard = () => {
-  const [period, setPeriod] = useState("7d");
+  const [period, setPeriod] = useState("1m");
   const { stats, fetchStats, isLoading } = useStatsStore();
-  
+
   useEffect(() => {
     if (!stats || stats.length === 0) {
       fetchStats();
@@ -29,22 +35,16 @@ const StatsDashboard = () => {
     if (period == "1y") return getYearStats(sortedStat);
   }, [period, sortedStat]);
 
-  const tabPeriod = [
-    { label: "1 week", tabName: "7d" },
-    { label: "1 month", tabName: "1m" },
-    { label: "1 year", tabName: "1y" },
-  ];
-
   const handlePeriod = (tab) => {
     if (tab === period) return;
     setPeriod(tab);
   };
 
-  if (isLoading) return <LoaderContainer />
+  if (isLoading) return <LoaderContainer />;
 
   return (
-    <div className="pt-12 pb-10">
-      <div className="flex gap-2.5 mb-5 bg-white p-1.5 rounded-xl">
+    <div className="pt-9 pb-10">
+      <div className=" flex gap-2.5 mb-5 bg-white p-1.5 rounded-xl">
         {tabPeriod.map((tab, i) => (
           <button
             key={i}
