@@ -9,9 +9,9 @@ import { useStatsStore } from "../../store/useStatsStore";
 import LoaderContainer from "../common/LoaderContainer";
 
 const tabPeriod = [
-  { label: "1 week", tabName: "7d" },
-  { label: "1 month", tabName: "1m" },
-  { label: "1 year", tabName: "1y" },
+  { label: "1 Week", tabName: "7d" },
+  { label: "1 Month", tabName: "1m" },
+  { label: "1 Year", tabName: "1y" },
 ];
 
 const StatsDashboard = () => {

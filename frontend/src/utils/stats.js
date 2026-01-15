@@ -92,11 +92,11 @@ export const getYearStats = (stats) => {
 
     return {
       workoutDate: formatDateforYear(month),
-      fieldGoal: sum.fieldGoal / statsOfMonth.length,
-      threePoint: sum.threePoint / statsOfMonth.length,
-      layupLeft: sum.layupLeft / statsOfMonth.length,
-      layupRight: sum.layupRight / statsOfMonth.length,
-      freeThrow: sum.freeThrow / statsOfMonth.length,
+      fieldGoal: Math.floor(sum.fieldGoal / statsOfMonth.length),
+      threePoint: Math.floor(sum.threePoint / statsOfMonth.length),
+      layupLeft: Math.floor(sum.layupLeft / statsOfMonth.length),
+      layupRight: Math.floor(sum.layupRight / statsOfMonth.length),
+      freeThrow: Math.floor(sum.freeThrow / statsOfMonth.length),
     };
   })
 };
