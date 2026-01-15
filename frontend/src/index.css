@@ -129,7 +129,7 @@ body {
 
 @layer utilities {
     .container {
-        @apply max-w-[336px] mx-auto sm:max-w-[450px] lg:max-w-[340px] ;
+        @apply max-w-[350px] mx-auto sm:max-w-[450px] lg:max-w-[340px] ;
     }
     .title {
         @apply text-center text-2xl uppercase font-bold mb-4 mt-4;
@@ -153,6 +153,9 @@ body {
   }
   .btn {
     @apply px-4 py-3 w-full text-white rounded-lg uppercase font-bold cursor-pointer;
+  }
+  .btn-stats {
+    @apply rounded-xl flex-1 cursor-pointer
   }
 }
 
