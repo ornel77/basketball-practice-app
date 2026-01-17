@@ -11,7 +11,7 @@ const SettingsContainer = () => {
         <h2 className="title">Settings</h2>
 
         <div className="mt-16">
-            <article onClick={() => navigate('/setting/account')} className="bg-white py-3 px-5 cursor-pointer  shadow-md border-b">
+            <article onClick={() => navigate('/settings/account')} className="bg-white py-3 px-5 cursor-pointer  shadow-md border-b">
                 Profile
             </article>
             <article className="bg-white py-3 px-5 cursor-pointer shadow-md mb-4">

@@ -78,7 +78,7 @@ function App() {
             }
           />
           <Route
-            path="/setting/account"
+            path="/settings/account"
             element={
               <ProtectedRoute>
                 <AccountSettings />
@@ -110,7 +110,7 @@ function App() {
             }
           />
           <Route
-            path="/setting"
+            path="/settings"
             element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
           />
         </Route>
