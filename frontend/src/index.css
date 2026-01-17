@@ -157,6 +157,15 @@ body {
   .btn-stats {
     @apply rounded-xl flex-1 cursor-pointer
   }
+  .tabs-settings {
+    @apply flex gap-4 items-center bg-white py-3 px-5 cursor-pointer shadow-md border-b
+  }
+  .icons-settings {
+    @apply w-7 h-7 flex items-center justify-center rounded-md
+  }
+  .coming-soon {
+    @apply text-xs bg-slate-500 w-fit text-slate-100 px-4 rounded-full py-1
+  }
 }
 
 .gradient {

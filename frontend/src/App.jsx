@@ -113,6 +113,10 @@ function App() {
             path="/settings"
             element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
           />
+          {/* <Route
+            path="/settings"
+            element={<SettingPage />}
+          /> */}
         </Route>
       </Routes>
       <Toaster />

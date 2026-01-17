@@ -7,7 +7,7 @@ const AccountSettings = () => {
         <div>
             {/* Redirect button */}
             <div className='flex items-center'>
-                <button onClick={() => navigate('/setting')} className='block'>
+                <button onClick={() => navigate('/settings')} className='block'>
                     <FaArrowLeft size={28} />
                 </button>
                 <h2 className="">Account Settings</h2>
