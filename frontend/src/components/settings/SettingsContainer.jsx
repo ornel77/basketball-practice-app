@@ -30,7 +30,7 @@ const SettingsContainer = () => {
         {/* NOTIFICATION */}
         <article className="tabs-settings mb-4">
           <section className="flex justify-between items-center w-full">
-            <div className="flex gap-4 items-center opacity-60">
+            <div className="flex gap-4 items-center opacity-50">
               <div className="icons-settings bg-yellow ">
                 <IoIosNotifications size={22} fill="white" />
               </div>
@@ -43,7 +43,7 @@ const SettingsContainer = () => {
         {/* CUSTOM WORKOUT */}
         <article className="tabs-settings mb-4">
           <section className="flex justify-between items-center w-full">
-            <div className="flex gap-4 items-center opacity-60">
+            <div className="flex gap-4 items-center opacity-50">
               <div className="icons-settings bg-blue-700">
                 <MdSportsBasketball size={20} fill="white" />
               </div>
@@ -56,7 +56,7 @@ const SettingsContainer = () => {
         {/* COLOR THEMES */}
         <article className="tabs-settings">
           <section className="flex justify-between items-center w-full">
-            <div className="flex gap-4 items-center opacity-60">
+            <div className="flex gap-4 items-center opacity-50">
               <div className="icons-settings bg-cyan-600 ">
                 <IoIosBrush size={22} fill="white" />
               </div>
@@ -69,7 +69,7 @@ const SettingsContainer = () => {
         {/* EXPORT DATA */}
         <article className="tabs-settings">
           <section className="flex justify-between items-center w-full">
-            <div className="flex gap-4 items-center opacity-60">
+            <div className="flex gap-4 items-center opacity-50">
               <div className="icons-settings bg-green">
                 <FaFileExport size={18} fill="white" />
               </div>

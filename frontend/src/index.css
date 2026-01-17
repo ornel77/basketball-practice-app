@@ -164,7 +164,7 @@ body {
     @apply w-7 h-7 flex items-center justify-center rounded-md
   }
   .coming-soon {
-    @apply text-xs bg-slate-500 w-fit text-slate-100 px-4 rounded-full py-1
+    @apply text-xs bg-gray-500 w-fit text-slate-100 px-4 rounded-full py-1
   }
 }
 
