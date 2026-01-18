@@ -16,7 +16,7 @@ const SettingsContainer = () => {
       <h2 className="title">Settings</h2>
 
       <div className="mt-16 font-light">
-        <h3 className="font-semibold text-xl mb-2">Account</h3>
+        <h3 className="font-semibold text-lg mb-1">Account</h3>
         {/* PROFILE */}
         <article
           onClick={() => navigate("/settings/account")}
@@ -41,7 +41,7 @@ const SettingsContainer = () => {
           </section>
         </article>
 
-        <h3 className="font-semibold text-xl mb-2">Workout</h3>
+        <h3 className="font-semibold text-lg mb-1">Workout</h3>
         {/* CUSTOM WORKOUT */}
         <article className="tabs-settings mb-4 rounded-lg">
           <section className="flex justify-between items-center w-full">
@@ -55,7 +55,7 @@ const SettingsContainer = () => {
           </section>
         </article>
 
-      <h3 className="font-semibold text-xl mb-2">App</h3>
+      <h3 className="font-semibold text-lg mb-1">Application</h3>
         {/* COLOR THEMES */}
         <article className="tabs-settings rounded-t-lg">
           <section className="flex justify-between items-center w-full">
