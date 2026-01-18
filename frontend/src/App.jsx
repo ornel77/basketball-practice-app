@@ -63,9 +63,9 @@ function App() {
           <Route
             path="/session"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <SessionPage />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
 
@@ -88,9 +88,9 @@ function App() {
           <Route
             path="/stats"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <StatsPage />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
@@ -104,9 +104,9 @@ function App() {
           <Route
             path="/guide"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <GuidePage />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           {/* <Route
