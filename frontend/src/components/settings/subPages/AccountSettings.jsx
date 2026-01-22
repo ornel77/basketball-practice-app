@@ -1,19 +1,24 @@
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import GoBackBtn from "../../common/GoBackBtn";
+import { useAuthStore } from "../../../store/useAuthStore";
 
 const AccountSettings = () => {
-  const [formData, setFormData] = useState({})
-  const isSigninUp = false
+  const { authUser } = useAuthStore();
+  console.log(authUser);
+  const [formData, setFormData] = useState({});
+  const isSigninUp = false;
 
-  const handleSubmit = () => {}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="">
       {/* Redirect button */}
       <div className="container my-5">
         <GoBackBtn url="/settings" />
         <h2 className="title">Account Settings</h2>
-        <form className="space-y-10 my-16" onSubmit={handleSubmit}>
+        <form className="space-y-10 my-20" onSubmit={handleSubmit}>
           <div className="flex justify-between gap-4">
             <input
               type="text"
@@ -22,6 +27,7 @@ const AccountSettings = () => {
               onChange={(e) =>
                 setFormData({ ...formData, firstname: e.target.value })
               }
+              value={authUser.firstname}
             />
             <input
               type="text"
@@ -30,6 +36,7 @@ const AccountSettings = () => {
               onChange={(e) =>
                 setFormData({ ...formData, lastname: e.target.value })
               }
+              value={authUser.lastname}
             />
           </div>
           <input
@@ -39,14 +46,7 @@ const AccountSettings = () => {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-          />
-          <input
-            type="password"
-            className="input"
-            placeholder="Password..."
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
+            value={authUser.email}
           />
           {/* TODO : Loading state */}
           <button
@@ -59,7 +59,7 @@ const AccountSettings = () => {
                 <Loader2 className="size-5 animate-spin" />
               </div>
             ) : (
-              "Save"
+              "Save changes"
             )}
           </button>
         </form>
