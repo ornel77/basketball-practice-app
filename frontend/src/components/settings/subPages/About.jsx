@@ -18,10 +18,10 @@ const About = () => {
         <p>
           This app is actively evolving. New features and improvements are added over time based on user feedback.
         </p>
-        <p className="italic text-[16px] leading-5 font-semibold ">
+        <div className="italic text-[16px] leading-5 font-semibold ">
           <p>Version 1.0</p>
           <p>&copy; 2026 OTR. All right reserved.</p>
-        </p>
+        </div>
       </article>
     </section>
   )
