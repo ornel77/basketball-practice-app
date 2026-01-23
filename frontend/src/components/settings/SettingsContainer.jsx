@@ -84,7 +84,7 @@ const SettingsContainer = () => {
         </article>
 
         {/* ABOUT */}
-        <article className="tabs-settings mb-4 rounded-b-lg">
+        <article className="tabs-settings mb-4 rounded-b-lg" onClick={() => navigate("/settings/about")}>
           <div className="icons-settings bg-fuchsia-500">
             <MdPermDeviceInformation size={22} fill="white" />
           </div>
