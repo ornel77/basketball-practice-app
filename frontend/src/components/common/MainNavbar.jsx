@@ -12,7 +12,7 @@ const MainNavbar = () => {
     { name: "Statistics", icon: IoIosStats, href: "/stats" },
     { name: "Historic", icon: MdOutlineHistory, href: "/historic" },
     { name: "Guide", icon: IoMdHelpCircleOutline, href: "/guide" },
-    { name: "Setting", icon: MdOutlineSettings, href: "/setting" },
+    { name: "Settings", icon: MdOutlineSettings, href: "/settings" },
   ];
   return (
     <div className="bg-purple text-white fixed bottom-0 w-full right-0 h-16  py-2 z-50">

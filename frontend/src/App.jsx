@@ -21,6 +21,7 @@ import NoNavbarLayout from "./layouts/NoNavbarLayout";
 import MainLayout from "./layouts/MainLayout";
 
 import AccountSettings from "./components/settings/subPages/AccountSettings";
+import About from "./components/settings/subPages/About";
 
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -78,10 +79,18 @@ function App() {
             }
           />
           <Route
-            path="/setting/account"
+            path="/settings/account"
             element={
               <ProtectedRoute>
                 <AccountSettings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings/about"
+            element={
+              <ProtectedRoute>
+                <About />
               </ProtectedRoute>
             }
           />
@@ -110,9 +119,13 @@ function App() {
             }
           />
           <Route
-            path="/setting"
+            path="/settings"
             element={authUser ? <SettingPage /> : <Navigate to={"/"} />}
           />
+          {/* <Route
+            path="/settings"
+            element={<SettingPage />}
+          /> */}
         </Route>
       </Routes>
       <Toaster />
