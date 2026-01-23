@@ -7,6 +7,7 @@ import {
 import StatsItem from "./StatsItem";
 import { useStatsStore } from "../../store/useStatsStore";
 import LoaderContainer from "../common/LoaderContainer";
+import { useNavigate } from "react-router-dom";
 
 const tabPeriod = [
   { label: "1 Week", tabName: "7d" },
@@ -17,12 +18,11 @@ const tabPeriod = [
 const StatsDashboard = () => {
   const [period, setPeriod] = useState("1m");
   const { stats, fetchStats, isLoading } = useStatsStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!stats || stats.length === 0) {
-      fetchStats();
-    }
-  }, [stats, fetchStats]);
+    fetchStats();
+  }, [fetchStats]);
 
   const sortedStat = [...stats].sort((a, b) => {
     const dateA = new Date(a.workoutDate);
@@ -40,55 +40,70 @@ const StatsDashboard = () => {
     setPeriod(tab);
   };
 
-  if (isLoading) return <LoaderContainer />;
-
   return (
-    <div className="pt-9 pb-10">
-      <div className=" flex gap-2.5 mb-5 bg-white p-1.5 rounded-xl">
-        {tabPeriod.map((tab, i) => (
+    <div className="pb-10">
+      <h2 className="title">Statistics</h2>
+      {isLoading && <LoaderContainer />}
+      {stats.length <= 0 ? (
+        <div className="text-center mt-20 space-y-9">
+          <p className="capitalize font-semibold text-xl">No data yet.</p>
+          <img src="/empty_court.png" alt="empty-court" />
           <button
-            key={i}
-            onClick={() => handlePeriod(tab.tabName)}
-            className={`btn-stats ${
-              period === tab.tabName ? "bg-red text-white" : ""
-            }`}
+            className="cursor-pointer inline-block bg-green text-white py-2 px-6 rounded-full text-lg font-bold"
+            onClick={() => navigate("/session")}
           >
-            {tab.label}
+            Start your training
           </button>
-        ))}
-      </div>
-      <div className="space-y-4">
-        <StatsItem
-          title="Field Goal"
-          valueKey="fieldGoal"
-          stats={filteredData}
-          color="#F233EE"
-        />
-        <StatsItem
-          title="3 Pointers"
-          valueKey="threePoint"
-          stats={filteredData}
-          color="#F2E00E"
-        />
-        <StatsItem
-          title="Layup Left"
-          valueKey="layupLeft"
-          stats={filteredData}
-          color="#2133EE"
-        />
-        <StatsItem
-          title="Layup Right"
-          valueKey="layupRight"
-          stats={filteredData}
-          color="#EE2330"
-        />
-        <StatsItem
-          title="Free Throw"
-          valueKey="freeThrow"
-          stats={filteredData}
-          color="#F3E00E"
-        />
-      </div>
+        </div>
+      ) : (
+        <>
+          <div className=" flex gap-2.5 mb-5 bg-white p-1.5 rounded-xl">
+            {tabPeriod.map((tab, i) => (
+              <button
+                key={i}
+                onClick={() => handlePeriod(tab.tabName)}
+                className={`btn-stats ${
+                  period === tab.tabName ? "bg-red text-white" : ""
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+          <div className="space-y-4">
+            <StatsItem
+              title="Field Goal"
+              valueKey="fieldGoal"
+              stats={filteredData}
+              color="#F233EE"
+            />
+            <StatsItem
+              title="3 Pointers"
+              valueKey="threePoint"
+              stats={filteredData}
+              color="#F2E00E"
+            />
+            <StatsItem
+              title="Layup Left"
+              valueKey="layupLeft"
+              stats={filteredData}
+              color="#2133EE"
+            />
+            <StatsItem
+              title="Layup Right"
+              valueKey="layupRight"
+              stats={filteredData}
+              color="#EE2330"
+            />
+            <StatsItem
+              title="Free Throw"
+              valueKey="freeThrow"
+              stats={filteredData}
+              color="#F3E00E"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
