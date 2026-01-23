@@ -2,16 +2,28 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import GoBackBtn from "../../common/GoBackBtn";
 import { useAuthStore } from "../../../store/useAuthStore";
+import { useUserStore } from "../../../store/useUserStore";
+import toast from "react-hot-toast";
 
 const AccountSettings = () => {
   const { authUser } = useAuthStore();
-  console.log(authUser);
-  const [formData, setFormData] = useState({});
+  const { updateProfile } = useUserStore();
+  const [formData, setFormData] = useState({
+    firstname: authUser.firstname || "",
+    lastname: authUser.lastname || "",
+    email: authUser.email || "",
+  });
   const isSigninUp = false;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const success = await updateProfile(formData);
+    if (success) {
+      console.log(authUser);
+      return toast.success("Changes saved in successfully");
+    }
   };
+  
   return (
     <div className="">
       {/* Redirect button */}
@@ -27,7 +39,7 @@ const AccountSettings = () => {
               onChange={(e) =>
                 setFormData({ ...formData, firstname: e.target.value })
               }
-              value={authUser.firstname}
+              value={formData.firstname}
             />
             <input
               type="text"
@@ -36,7 +48,7 @@ const AccountSettings = () => {
               onChange={(e) =>
                 setFormData({ ...formData, lastname: e.target.value })
               }
-              value={authUser.lastname}
+              value={formData.lastname}
             />
           </div>
           <input
@@ -46,7 +58,7 @@ const AccountSettings = () => {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-            value={authUser.email}
+            value={formData.email}
           />
           {/* TODO : Loading state */}
           <button

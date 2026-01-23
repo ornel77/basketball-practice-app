@@ -63,16 +63,16 @@ export const deleteUser = async (req, res, next) => {
 };
 
 export const updateUser = async (req, res, next) => {
-    const { id } = req.params;
-    const user = req.body;
+    const updatedData = req.body
+    const user = req.user;
     try {
-        if (!mongoose.Types.ObjectId.isValid(id)) {
+        if (!mongoose.Types.ObjectId.isValid(user._id)) {
             return res
                 .status(400)
                 .json({ success: false, message: 'Invalid ID' });
         }
 
-        const updatedUser = await User.findByIdAndUpdate(id, user, {
+        const updatedUser = await User.findByIdAndUpdate(user._id, updatedData, {
             new: true,
         }).select('-password');
 

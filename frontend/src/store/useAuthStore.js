@@ -57,4 +57,5 @@ export const useAuthStore = create((set) => ({
       console.log("error in logout", error);
     }
   },
+  setAuthUser: (user) => set({  authUser : user})
 }));
