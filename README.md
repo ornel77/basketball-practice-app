@@ -51,19 +51,5 @@ Perfect for solo workouts or pre-practice routines.
 - JWT Authentication
 - Validator (data validation)
 
----
 
-## 📂 Project Structure (simplified)
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js
-- MongoDB (local or cloud)
-
-### Installation
-
-```bash
-git clone https://github.com/your-username/basketball-practice.git
-cd basketball-practice
-npm install

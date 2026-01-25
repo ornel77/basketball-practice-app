@@ -9,7 +9,7 @@ const SessionHeading = () => {
     <>
       <p className="text-xl font-bold mb-3">
         Hi,
-        <span className="italic capitalize">{authUser?.firstname}</span>! 👋🏽{" "}
+        <span className="uppercase"> {authUser?.firstname}</span>! 👋🏽{" "}
       </p>
       <h2 className="title">
         start a session
