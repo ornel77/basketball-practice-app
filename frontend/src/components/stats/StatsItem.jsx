@@ -47,14 +47,15 @@ const StatsItem = ({ title, valueKey, color, stats }) => {
 
     series: [
       {
-        type: "bar",
-        smooth: false,
+        type: "line",
+        smooth: true,
         connectNulls: true,
         itemStyle: { color: color },
-        lineStyle: {
-          color: color,
-          width: 5,
-        },
+        // lineStyle: {
+        //   color: color,
+        //   width: 2,
+        // },
+        areaStyle: {},
         data: stats.map((d) => [d.workoutDate, d[valueKey]]),
       },
     ],
