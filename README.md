@@ -13,7 +13,7 @@ Inspired by Stephen Curry’s masterclass, the app focuses on repetition, consis
   - 3 Pointers
   - Layup Left / Right
   - Free Throws
-- 🗓️ Add sessions for any date (not only today)
+- 🗓️ Add sessions for any date
 - 📈 Visual statistics dashboard (weekly / monthly / yearly)
 - 🔄 Compare latest session with previous one (Recap)
 - 🧠 Training guide & mindset section
