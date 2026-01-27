@@ -12,14 +12,12 @@ export const useStatsStore = create((set) => ({
     set({ isCreating: true });
     try {
       const res = await axiosInstance.post(`/stats/user`, data);
-      console.log("registerStat store", res.data);
       set((state) => ({
         stats: [...state.stats, res.data.data],
         lastCreatedStat: res.data.data,
       }));
       return true
     } catch (error) {
-      console.log("error in register stat store", error);
       toast.error(error.response.data.message);
       return false
     } finally {

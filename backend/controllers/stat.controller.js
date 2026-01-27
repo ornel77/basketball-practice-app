@@ -53,7 +53,6 @@ export const createStat = async (req, res) => {
       user: user._id,
     });
 
-    console.log("newStat dans le controller", newStat);
 
     await newStat.save();
 

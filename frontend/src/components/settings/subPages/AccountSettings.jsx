@@ -19,7 +19,6 @@ const AccountSettings = () => {
     e.preventDefault();
     const success = await updateProfile(formData);
     if (success) {
-      console.log(authUser);
       return toast.success("Changes saved in successfully");
     }
   };

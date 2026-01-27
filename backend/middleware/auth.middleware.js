@@ -30,7 +30,6 @@ export const protectRoute = async (req, res, next) => {
 
     // add this user field in the request since is authentificated
     req.user = user;
-    // console.log(req.user)
 
     next();
   } catch (error) {

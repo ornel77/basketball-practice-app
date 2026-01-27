@@ -10,7 +10,6 @@ export const useUserStore = create((set) => ({
     try {
       const res = await axiosInstance.put("/users/update", data)
       useAuthStore.getState().setAuthUser(res.data.data)
-      console.log("updateProfileStore",res.data.data)
       return true
     } catch (error) {
       console.log("error in updateProfile", error);
