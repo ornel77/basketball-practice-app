@@ -51,11 +51,11 @@ const StatsItem = ({ title, valueKey, color, stats }) => {
         smooth: true,
         connectNulls: true,
         itemStyle: { color: color },
-        // lineStyle: {
-        //   color: color,
-        //   width: 2,
-        // },
-        areaStyle: {},
+        lineStyle: {
+          color: color,
+          width: 2,
+        },
+        // areaStyle: {},
         data: stats.map((d) => [d.workoutDate, d[valueKey]]),
       },
     ],
